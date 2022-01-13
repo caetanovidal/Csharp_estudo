@@ -1,0 +1,6 @@
+C:\Users\Windows\estudos\C#exercicios\ConversorMoeda_opp\ConversorMoeda_opp\bin\Debug\ConversorMoeda_opp.exe.config
+C:\Users\Windows\estudos\C#exercicios\ConversorMoeda_opp\ConversorMoeda_opp\bin\Debug\ConversorMoeda_opp.exe
+C:\Users\Windows\estudos\C#exercicios\ConversorMoeda_opp\ConversorMoeda_opp\bin\Debug\ConversorMoeda_opp.pdb
+C:\Users\Windows\estudos\C#exercicios\ConversorMoeda_opp\ConversorMoeda_opp\obj\Debug\ConversorMoeda_opp.csproj.CoreCompileInputs.cache
+C:\Users\Windows\estudos\C#exercicios\ConversorMoeda_opp\ConversorMoeda_opp\obj\Debug\ConversorMoeda_opp.exe
+C:\Users\Windows\estudos\C#exercicios\ConversorMoeda_opp\ConversorMoeda_opp\obj\Debug\ConversorMoeda_opp.pdb

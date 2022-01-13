@@ -1,0 +1,7 @@
+C:\Users\Windows\estudos\C#aulas\ConsoleApp9-sobrecarga\ConsoleApp9-sobrecarga\bin\Debug\ConsoleApp9-sobrecarga.exe.config
+C:\Users\Windows\estudos\C#aulas\ConsoleApp9-sobrecarga\ConsoleApp9-sobrecarga\bin\Debug\ConsoleApp9-sobrecarga.exe
+C:\Users\Windows\estudos\C#aulas\ConsoleApp9-sobrecarga\ConsoleApp9-sobrecarga\bin\Debug\ConsoleApp9-sobrecarga.pdb
+C:\Users\Windows\estudos\C#aulas\ConsoleApp9-sobrecarga\ConsoleApp9-sobrecarga\obj\Debug\ConsoleApp9-sobrecarga.csprojAssemblyReference.cache
+C:\Users\Windows\estudos\C#aulas\ConsoleApp9-sobrecarga\ConsoleApp9-sobrecarga\obj\Debug\ConsoleApp9-sobrecarga.csproj.CoreCompileInputs.cache
+C:\Users\Windows\estudos\C#aulas\ConsoleApp9-sobrecarga\ConsoleApp9-sobrecarga\obj\Debug\ConsoleApp9-sobrecarga.exe
+C:\Users\Windows\estudos\C#aulas\ConsoleApp9-sobrecarga\ConsoleApp9-sobrecarga\obj\Debug\ConsoleApp9-sobrecarga.pdb

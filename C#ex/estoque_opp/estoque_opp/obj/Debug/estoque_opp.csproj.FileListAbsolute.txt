@@ -1,0 +1,7 @@
+C:\Users\Windows\estudos\C#aulas\estoque_opp\estoque_opp\obj\Debug\estoque_opp.csprojAssemblyReference.cache
+C:\Users\Windows\estudos\C#aulas\estoque_opp\estoque_opp\obj\Debug\estoque_opp.csproj.CoreCompileInputs.cache
+C:\Users\Windows\estudos\C#aulas\estoque_opp\estoque_opp\bin\Debug\estoque_opp.exe.config
+C:\Users\Windows\estudos\C#aulas\estoque_opp\estoque_opp\bin\Debug\estoque_opp.exe
+C:\Users\Windows\estudos\C#aulas\estoque_opp\estoque_opp\bin\Debug\estoque_opp.pdb
+C:\Users\Windows\estudos\C#aulas\estoque_opp\estoque_opp\obj\Debug\estoque_opp.exe
+C:\Users\Windows\estudos\C#aulas\estoque_opp\estoque_opp\obj\Debug\estoque_opp.pdb

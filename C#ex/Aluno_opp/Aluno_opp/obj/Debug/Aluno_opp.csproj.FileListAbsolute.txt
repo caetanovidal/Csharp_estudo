@@ -1,0 +1,7 @@
+C:\Users\Windows\estudos\C#aulas\Aluno_opp\Aluno_opp\bin\Debug\Aluno_opp.exe.config
+C:\Users\Windows\estudos\C#aulas\Aluno_opp\Aluno_opp\bin\Debug\Aluno_opp.exe
+C:\Users\Windows\estudos\C#aulas\Aluno_opp\Aluno_opp\bin\Debug\Aluno_opp.pdb
+C:\Users\Windows\estudos\C#aulas\Aluno_opp\Aluno_opp\obj\Debug\Aluno_opp.csprojAssemblyReference.cache
+C:\Users\Windows\estudos\C#aulas\Aluno_opp\Aluno_opp\obj\Debug\Aluno_opp.csproj.CoreCompileInputs.cache
+C:\Users\Windows\estudos\C#aulas\Aluno_opp\Aluno_opp\obj\Debug\Aluno_opp.exe
+C:\Users\Windows\estudos\C#aulas\Aluno_opp\Aluno_opp\obj\Debug\Aluno_opp.pdb

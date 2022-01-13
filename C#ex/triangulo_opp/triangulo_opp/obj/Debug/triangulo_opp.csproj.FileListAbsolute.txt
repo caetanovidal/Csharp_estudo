@@ -1,0 +1,7 @@
+C:\Users\Windows\estudos\C#aulas\triangulo_opp\triangulo_opp\bin\Debug\triangulo_opp.exe.config
+C:\Users\Windows\estudos\C#aulas\triangulo_opp\triangulo_opp\bin\Debug\triangulo_opp.exe
+C:\Users\Windows\estudos\C#aulas\triangulo_opp\triangulo_opp\bin\Debug\triangulo_opp.pdb
+C:\Users\Windows\estudos\C#aulas\triangulo_opp\triangulo_opp\obj\Debug\triangulo_opp.csprojAssemblyReference.cache
+C:\Users\Windows\estudos\C#aulas\triangulo_opp\triangulo_opp\obj\Debug\triangulo_opp.csproj.CoreCompileInputs.cache
+C:\Users\Windows\estudos\C#aulas\triangulo_opp\triangulo_opp\obj\Debug\triangulo_opp.exe
+C:\Users\Windows\estudos\C#aulas\triangulo_opp\triangulo_opp\obj\Debug\triangulo_opp.pdb
