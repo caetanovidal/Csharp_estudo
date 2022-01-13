@@ -12,19 +12,24 @@ namespace ConsoleApp9_sobrecarga
         public double price;
         public int quant;
 
-        public Product(string name, double price, int quant)
+        // Reaproveitando construtores
+        public Product()
+        {
+            quant = 0;
+        }
+
+        public Product(string name, double price) : this()
         {
             this.name = name;
             this.price = price;
+        }
+        
+        public Product(string name, double price, int quant) : this(name, price)
+        {
             this.quant = quant;
         }
 
-        public Product(string name, double price)
-        {
-            this.name = name;
-            this.price = price;
-            this.quant = 0;
-        }
+        // ---------------------
 
         public double Total()
         {
