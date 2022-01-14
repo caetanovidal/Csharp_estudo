@@ -58,8 +58,39 @@ namespace ConsoleApp12_Autoproperties
 
         public override string ToString()
         {
-            return _name + ", $" + _price.ToString("F2") + ", quantidade: " + _quant +
-                ", total $:" + total().ToString("F2");
+            int index;
+            if(BuscaValor(vet, 10, out index))
+            {
+                // Usa o Index para algo
+            }
+            else
+            {
+                // Não encontrado;
+            }
+            //return _name + ", $" + _price.ToString("F2") + ", quantidade: " + _quant +
+            //    ", total $:" + total().ToString("F2");
+            return string.Format("{0}, ${1:F2}, quantidade: {2:F2}, total $: {3:F2}",)
+        }
+
+        private bool BuscaValor(int[] vet, int valor, out int index)
+        {
+            for (int i = 0; i < vet.Length; i++)
+            {
+                if (vet[i] == valor)
+                {
+                    index = i;
+                    return true;
+                }
+            }
+            
+            index = 0;
+            return false;
+        }
+
+        struct Retorno
+        {
+            bool Encontrado;
+            int Index;
         }
     }
 }
