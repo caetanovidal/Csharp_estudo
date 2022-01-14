@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp29_herança.Entities
 {
-    class SavingsAccountPlus
+    class SavingsAccountPlus : SavingsAccount
     {
+        // public override void Withdrawn(double amount) { } <- Metodo sobreposto selado, n pode ser sobreposto novamente.
     }
 }

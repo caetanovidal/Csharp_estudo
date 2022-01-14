@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7763B238-9D81-41C6-8F53-A3CA8BFDAC6C}</ProjectGuid>
+    <ProjectGuid>{7BD632F5-51F6-438B-8E91-EAD065899AE3}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ConsoleApp29_herança</RootNamespace>
-    <AssemblyName>ConsoleApp29-herança</AssemblyName>
+    <RootNamespace>ConsoleApp30_henranca_polimorfismo_pt2</RootNamespace>
+    <AssemblyName>ConsoleApp30-henranca-polimorfismo-pt2</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,10 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\Account.cs" />
-    <Compile Include="Entities\BussinesAccount.cs" />
-    <Compile Include="Entities\SavingsAccount.cs" />
-    <Compile Include="Entities\SavingsAccountPlus.cs" />
+    <Compile Include="entities\Employees.cs" />
+    <Compile Include="entities\OutsourcedEmployee.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
