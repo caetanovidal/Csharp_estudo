@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6BBEFBD0-B278-40D4-A075-6FBD3B35F948}</ProjectGuid>
+    <ProjectGuid>{7763B238-9D81-41C6-8F53-A3CA8BFDAC6C}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ConsoleApp26_enumeracoes_p1</RootNamespace>
-    <AssemblyName>ConsoleApp26-enumeracoes-p1</AssemblyName>
+    <RootNamespace>ConsoleApp29_herança</RootNamespace>
+    <AssemblyName>ConsoleApp29-herança</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,8 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="entities\Order.cs" />
-    <Compile Include="entities\OrderStatus.cs" />
+    <Compile Include="Entities\Account.cs" />
+    <Compile Include="Entities\BussinesAccount.cs" />
+    <Compile Include="Entities\SavingsAccount.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
