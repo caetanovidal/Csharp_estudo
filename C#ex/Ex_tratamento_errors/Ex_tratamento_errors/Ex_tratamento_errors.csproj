@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0825284F-3733-4FB5-BC42-8F5F8EB707AD}</ProjectGuid>
+    <ProjectGuid>{D5BDE5BA-1680-4DFD-ADEB-86DC5C0BA019}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ConsoleApp31_classes_abstratas</RootNamespace>
-    <AssemblyName>ConsoleApp31-classes abstratas</AssemblyName>
+    <RootNamespace>Ex_tratamento_errors</RootNamespace>
+    <AssemblyName>Ex_tratamento_errors</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -44,15 +44,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Account.cs" />
-    <Compile Include="Entities\BussinesAccount.cs" />
-    <Compile Include="Entities\SavingsAccount.cs" />
-    <Compile Include="Entities\SavingsAccountPlus.cs" />
+    <Compile Include="Entities\Exceptions\DomainExceptions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

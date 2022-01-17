@@ -23,11 +23,12 @@ namespace Ex_enumeracoes
 
             Console.WriteLine("Enter order data: ");
             Console.Write("Status: ");
-
+            
+            
 
             Client cli = new Client(name, email, BirthDay);
 
-            OrderStatus status = new OrderStatus();
+            OrderStatus status = Enum.Parse<OrderStatus>(Console.ReadLine());
 
             Order order = new Order(DateTime.Now, status, cli);
 

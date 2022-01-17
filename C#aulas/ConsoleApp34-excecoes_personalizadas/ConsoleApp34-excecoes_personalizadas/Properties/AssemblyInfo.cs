@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // As informações gerais sobre um assembly são controladas por
 // conjunto de atributos. Altere estes valores de atributo para modificar as informações
 // associada a um assembly.
-[assembly: AssemblyTitle("ConsoleApp31-classes abstratas")]
+[assembly: AssemblyTitle("ConsoleApp34-excecoes_personalizadas")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ConsoleApp31-classes abstratas")]
+[assembly: AssemblyProduct("ConsoleApp34-excecoes_personalizadas")]
 [assembly: AssemblyCopyright("Copyright ©  2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // O GUID a seguir será destinado à ID de typelib se este projeto for exposto para COM
-[assembly: Guid("0825284f-3733-4fb5-bc42-8f5f8eb707ad")]
+[assembly: Guid("e88ede8a-637d-45dd-9158-8dec70274497")]
 
 // As informações da versão de um assembly consistem nos quatro valores a seguir:
 //

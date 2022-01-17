@@ -24,7 +24,7 @@ namespace ConsoleApp30_henranca_polimorfismo_pt2.entities
             ValuePerHour = valuePerHour;
         }
 
-        public double Payment()
+        public virtual double Payment()
         {
             return Hours * ValuePerHour;
         }

@@ -21,9 +21,9 @@ namespace ConsoleApp30_henranca_polimorfismo_pt2.entities
 
         }
 
-        public double Payment()
+        public override double Payment()
         {
-            return (Hours * ValuePerHour) + AdditionalCharge + (AdditionalCharge/10);
+            return base.Payment() + AdditionalCharge + (AdditionalCharge/10);
         }
 
         public override string ToString()
