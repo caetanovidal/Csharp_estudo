@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ConsoleApp39_Interface.Entities;
+using ConsoleApp39_Interface.Services;
 
 namespace ConsoleApp39_Interface
 {
@@ -21,9 +22,22 @@ namespace ConsoleApp39_Interface
             Console.WriteLine("Return (dd/MM/yyyy hh:mm): ");
             DateTime finish = DateTime.Parse(Console.ReadLine());
 
+            Console.WriteLine("Enter price per hour: ");
+            double hour = double.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter price per day: ");
+            double day = double.Parse(Console.ReadLine());
+
             CarRental rent = new CarRental(start, finish, new Vehicle(model));
 
+            RentalService service = new RentalService(hour, day);
+
+            service.ProcessInvoce(rent);
+
+            Console.WriteLine("INVOICE: ");
+            Console.WriteLine(rent.Payment);
 
         }
     }
 }
+ 

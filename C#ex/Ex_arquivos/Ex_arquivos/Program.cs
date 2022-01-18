@@ -26,11 +26,11 @@ namespace Ex_arquivos
                         string[] words = line.Split(',');
 
                         string name = words[0];
-                        double price = double.Parse(words[1]);
+                        double price = double.Parse(words[1], CultureInfo.InvariantCulture);
                         int quant = int.Parse(words[2]);
                         double res = price * quant;
 
-                        sw.WriteLine(words[0] + ", " + res);
+                        sw.WriteLine(words[0] + ", " + res.ToString(CultureInfo.InvariantCulture));
 
                         //foreach (string w in words) debug print's
                         //{
