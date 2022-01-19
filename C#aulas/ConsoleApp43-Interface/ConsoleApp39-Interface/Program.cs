@@ -30,7 +30,7 @@ namespace ConsoleApp39_Interface
 
             CarRental rent = new CarRental(start, finish, new Vehicle(model));
 
-            RentalService service = new RentalService(hour, day);
+            RentalService service = new RentalService(hour, day, new BrazilTaxService());
 
             service.ProcessInvoce(rent);
 

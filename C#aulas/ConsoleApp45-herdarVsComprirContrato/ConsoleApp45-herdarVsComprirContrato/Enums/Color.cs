@@ -4,13 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp44_Interface_p2
+namespace ConsoleApp45_herdarVsComprirContrato.Enums
 {
-    class Program
+    enum Color
     {
-        static void Main(string[] args)
-        {
-
-        }
+        Black, White
     }
 }

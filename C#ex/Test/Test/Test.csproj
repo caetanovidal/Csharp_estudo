@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7E87895A-76BD-45AA-A413-62097D666490}</ProjectGuid>
+    <ProjectGuid>{CE7EBA14-B939-4A70-AE73-3960DC67D4B0}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ConsoleApp39_Interface</RootNamespace>
-    <AssemblyName>ConsoleApp39-Interface</AssemblyName>
+    <RootNamespace>Test</RootNamespace>
+    <AssemblyName>Test</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,14 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\CarRental.cs" />
-    <Compile Include="Entities\Invoce.cs" />
-    <Compile Include="Entities\Vehicle.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\BrazilTaxService.cs" />
-    <Compile Include="Services\ITaxService.cs" />
-    <Compile Include="Services\RentalService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

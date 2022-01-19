@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7E87895A-76BD-45AA-A413-62097D666490}</ProjectGuid>
+    <ProjectGuid>{9F212709-1348-457E-ABBB-D7AA5279B5EF}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ConsoleApp39_Interface</RootNamespace>
-    <AssemblyName>ConsoleApp39-Interface</AssemblyName>
+    <RootNamespace>ConsoleApp47_InterfaceComparable</RootNamespace>
+    <AssemblyName>ConsoleApp47-InterfaceComparable</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,14 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\CarRental.cs" />
-    <Compile Include="Entities\Invoce.cs" />
-    <Compile Include="Entities\Vehicle.cs" />
+    <Compile Include="Entities\Employee.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\BrazilTaxService.cs" />
-    <Compile Include="Services\ITaxService.cs" />
-    <Compile Include="Services\RentalService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

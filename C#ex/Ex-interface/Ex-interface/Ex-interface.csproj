@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7E87895A-76BD-45AA-A413-62097D666490}</ProjectGuid>
+    <ProjectGuid>{E069FAAC-0B3A-41E0-B6DE-04B7BB3EDAAB}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ConsoleApp39_Interface</RootNamespace>
-    <AssemblyName>ConsoleApp39-Interface</AssemblyName>
+    <RootNamespace>Ex_interface</RootNamespace>
+    <AssemblyName>Ex-interface</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,17 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\CarRental.cs" />
-    <Compile Include="Entities\Invoce.cs" />
-    <Compile Include="Entities\Vehicle.cs" />
+    <Compile Include="Entities\Contract.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\BrazilTaxService.cs" />
-    <Compile Include="Services\ITaxService.cs" />
-    <Compile Include="Services\RentalService.cs" />
+    <Compile Include="Entities\Installment.cs" />
+    <Compile Include="Services\ContractService.cs" />
+    <Compile Include="Services\IOnlinePaymentService.cs" />
+    <Compile Include="Services\PaypalService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

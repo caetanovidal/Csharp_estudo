@@ -4,13 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp44_Interface_p2
+namespace ConsoleApp46_problema_do_diamante.Devices
 {
-    class Program
+    interface IPrinter
     {
-        static void Main(string[] args)
-        {
-
-        }
+        void Print(string document);
     }
 }
+
