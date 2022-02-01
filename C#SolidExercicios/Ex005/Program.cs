@@ -10,6 +10,16 @@ namespace Ex005
     {
         static void Main(string[] args)
         {
+            IPizza calabresa = new PizzaCalabresa();
+            IPizza mussarela = new PizzaMussarela();
+
+            Pizzaria pizzaria = new Pizzaria();
+
+            pizzaria.CriarPizza(calabresa, 30, "calabresa");
+            pizzaria.CriarPizza(mussarela, 25, "mussarela");
+
+            Console.WriteLine(calabresa.Sabor);
+            Console.WriteLine(mussarela.Sabor);
         }
     }
 }

@@ -43,7 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CalcularDesconto.cs" />
+    <Compile Include="IPromocao.cs" />
+    <Compile Include="Produto.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="PromocaoDiaMaes.cs" />
+    <Compile Include="PromocaoDiaNamorados.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

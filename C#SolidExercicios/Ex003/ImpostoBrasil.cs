@@ -10,7 +10,7 @@ namespace Ex003
     {
         public decimal BaseImposto(decimal amount)
         {
-            return amount - (amount * Constantes.IMPOSTO_BR);
+            return (amount * Constantes.IMPOSTO_BR);
         }
     }
 }

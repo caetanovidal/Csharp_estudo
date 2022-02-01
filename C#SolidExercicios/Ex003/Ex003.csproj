@@ -43,6 +43,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CalcularImpostos.cs" />
+    <Compile Include="Constantes.cs" />
+    <Compile Include="EnumPaises.cs" />
+    <Compile Include="IImpostos.cs" />
+    <Compile Include="ImpostoBrasil.cs" />
+    <Compile Include="ImpostoUruguai.cs" />
+    <Compile Include="ImpostoUSA.cs" />
+    <Compile Include="IVerificaPais.cs" />
+    <Compile Include="PaisImpostoFactory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -18,6 +18,9 @@ namespace a005_AplicandoSOLIDpratica
             descontoStatusConta = _descontoStatusConta;
         }
 
+
+
+
         public decimal AplicarDesconto(decimal precoProduto, 
             StatusContaCliente statusContaCliente, int tempoDeContaEmAnos)
         {
