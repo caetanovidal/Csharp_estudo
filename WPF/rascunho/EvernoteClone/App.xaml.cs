@@ -6,13 +6,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace wpf006_CloneEverNote
+namespace EvernoteClone
 {
     /// <summary>
-    /// Interação lógica para App.xaml
+    /// Interaction logic for App.xaml
     /// </summary>
     public partial class App : Application
     {
-        public static string UserID = string.Empty;
+        public static string UserId = string.Empty;
     }
 }

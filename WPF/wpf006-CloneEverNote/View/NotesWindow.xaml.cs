@@ -15,6 +15,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Globalization;
 using System.Windows.Controls.Primitives;
+using wpf006_CloneEverNote.ViewModel;
+using wpf006_CloneEverNote.ViewModel.Helpers;
+using System.IO;
 
 namespace wpf006_CloneEverNote.View
 {
@@ -24,9 +27,14 @@ namespace wpf006_CloneEverNote.View
     public partial class NotesWindow : Window
     {
         SpeechRecognitionEngine recognizer;
+
+        NotesVM viewModel;
         public NotesWindow()
         {
             InitializeComponent();
+
+            viewModel = Resources["vm"] as NotesVM;
+            viewModel.SelectedNoteChanged += ViewModelSelectedNoteChanged;
 
             //recognizer = new SpeechRecognitionEngine();
 
@@ -43,6 +51,35 @@ namespace wpf006_CloneEverNote.View
 
             List<double> fontSizes = new List<double>() { 8, 9, 10, 11, 12, 14, 16, 18, 28, 48, 56 };
             fontSizeComboBox.ItemsSource = fontSizes;
+        }
+
+        protected override void OnActivated(EventArgs e)
+        {
+            base.OnActivated(e);
+
+            if (string.IsNullOrEmpty(App.UserID))
+            {
+                LoginWindow loginWin = new LoginWindow();
+                loginWin.ShowDialog();
+
+            }
+
+            viewModel.GetNotebooks();
+        }
+
+        private void ViewModelSelectedNoteChanged(object sender, EventArgs e)
+        {
+            contentRichTextBox.Document.Blocks.Clear();
+            if (viewModel.SelectedNote != null)
+            {
+                if (!string.IsNullOrEmpty(viewModel.SelectedNote.FileLocation))
+                {
+                    FileStream file = new FileStream(viewModel.SelectedNote.FileLocation, FileMode.Open);
+                    var content = new TextRange(contentRichTextBox.Document.ContentStart, contentRichTextBox.Document.ContentEnd);
+                    content.Load(file, DataFormats.Rtf);
+                }
+            }
+            
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
@@ -150,6 +187,22 @@ namespace wpf006_CloneEverNote.View
         private void FontSizeComboBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             contentRichTextBox.Selection.ApplyPropertyValue(Inline.FontSizeProperty, fontSizeComboBox.Text);
+        }
+
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void Save_Click(object sender, RoutedEventArgs e)
+        {
+            string rtfFile = System.IO.Path.Combine(Environment.CurrentDirectory, $"{viewModel.SelectedNote.Id}.rtf");
+            viewModel.SelectedNote.FileLocation = rtfFile;
+            DatabaseHelper.Update(viewModel.SelectedNote);
+
+            FileStream file = new FileStream(rtfFile, FileMode.Create);
+            var contents = new TextRange(contentRichTextBox.Document.ContentStart, contentRichTextBox.Document.ContentEnd);
+            contents.Save(file, DataFormats.Rtf);
         }
     }
 }

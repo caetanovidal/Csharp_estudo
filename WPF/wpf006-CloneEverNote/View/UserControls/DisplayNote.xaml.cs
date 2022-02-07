@@ -17,33 +17,31 @@ using wpf006_CloneEverNote.Model;
 namespace wpf006_CloneEverNote.View.UserControls
 {
     /// <summary>
-    /// Interação lógica para DisplayNotebook.xam
+    /// Interação lógica para DisplayNote.xam
     /// </summary>
-    public partial class DisplayNotebook : UserControl
+    public partial class DisplayNote : UserControl
     {
-
-
-        public Notebook BookNote
+        public Notes Note
         {
-            get { return (Notebook)GetValue(BookNoteProperty); }
-            set { SetValue(BookNoteProperty, value); }
+            get { return (Notes)GetValue(NoteProperty); }
+            set { SetValue(NoteProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty BookNoteProperty =
-            DependencyProperty.Register("BookNote", typeof(Notebook), typeof(DisplayNotebook), new PropertyMetadata(null, SetValues));
+        public static readonly DependencyProperty NoteProperty =
+            DependencyProperty.Register("Note", typeof(Notes), typeof(DisplayNote), new PropertyMetadata(null, SetValues));
 
         private static void SetValues(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DisplayNotebook notebookUserControl = d as DisplayNotebook;
+            DisplayNote noteUserControl = d as DisplayNote;
 
-            if (notebookUserControl != null)
+            if (noteUserControl != null)
             {
-                notebookUserControl.DataContext = notebookUserControl.BookNote;
+                noteUserControl.DataContext = noteUserControl.Note;
             }
         }
 
-        public DisplayNotebook()
+        public DisplayNote()
         {
             InitializeComponent();
         }

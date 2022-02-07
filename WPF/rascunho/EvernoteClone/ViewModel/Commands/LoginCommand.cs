@@ -1,26 +1,25 @@
-﻿using System;
+﻿using EvernoteClone.Model;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
-using wpf006_CloneEverNote.Model;
 
-namespace wpf006_CloneEverNote.ViewModel.Commands
+namespace EvernoteClone.ViewModel.Commands
 {
-    public class RegisterCommand : ICommand
+    public class LoginCommand :ICommand
     {
-        public LoginVM LoginViewModel { get; set; }
+        public LoginVM ViewModel { get; set; }
         public event EventHandler CanExecuteChanged
         {
             add { CommandManager.RequerySuggested += value; }
             remove { CommandManager.RequerySuggested -= value; }
         }
 
-        public RegisterCommand(LoginVM vm)
+        public LoginCommand(LoginVM vm)
         {
-            LoginViewModel = vm;
+            ViewModel = vm;
         }
+
         public bool CanExecute(object parameter)
         {
             User user = parameter as User;
@@ -31,17 +30,12 @@ namespace wpf006_CloneEverNote.ViewModel.Commands
                 return false;
             if (string.IsNullOrEmpty(user.Password))
                 return false;
-            if (string.IsNullOrEmpty(user.ConfirmaPassword))
-                return false;
-            if (user.Password != user.ConfirmaPassword)
-                return false;
-
             return true;
         }
 
         public void Execute(object parameter)
         {
-            LoginViewModel.Register();
+            ViewModel.Login();
         }
     }
 }

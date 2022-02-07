@@ -7,15 +7,17 @@ using System.Windows.Input;
 
 namespace wpf006_CloneEverNote.ViewModel.Commands
 {
-    public class NewNotebookcommand : ICommand
+    public class ShowRegisterCommand : ICommand
     {
-        public NotesVM VMnotes { get; set; }
+        public LoginVM ViewModel { get; set; }
 
         public event EventHandler CanExecuteChanged;
-        public NewNotebookcommand(NotesVM vm)
+
+        public ShowRegisterCommand(LoginVM vm)
         {
-            VMnotes = vm;
+            ViewModel = vm;
         }
+
         public bool CanExecute(object parameter)
         {
             return true;
@@ -23,9 +25,7 @@ namespace wpf006_CloneEverNote.ViewModel.Commands
 
         public void Execute(object parameter)
         {
-            VMnotes.CreateNotebook();
+            ViewModel.SwithcViews();
         }
-
-
     }
 }

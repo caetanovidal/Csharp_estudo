@@ -43,12 +43,66 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EvernoteClone\App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EvernoteClone\AssemblyInfo.cs" />
+    <Compile Include="EvernoteClone\Model\Note.cs" />
+    <Compile Include="EvernoteClone\Model\Notebook.cs" />
+    <Compile Include="EvernoteClone\Model\User.cs" />
+    <Compile Include="EvernoteClone\ViewModel\Commands\EditCommand.cs" />
+    <Compile Include="EvernoteClone\ViewModel\Commands\EndEditingCommand.cs" />
+    <Compile Include="EvernoteClone\ViewModel\Commands\LoginCommand.cs" />
+    <Compile Include="EvernoteClone\ViewModel\Commands\NewNotebookCommand.cs" />
+    <Compile Include="EvernoteClone\ViewModel\Commands\NewNoteCommand.cs" />
+    <Compile Include="EvernoteClone\ViewModel\Commands\RegisterCommand.cs" />
+    <Compile Include="EvernoteClone\ViewModel\Commands\ShowRegisterCommand.cs" />
+    <Compile Include="EvernoteClone\ViewModel\Helpers\DatabaseHelper.cs" />
+    <Compile Include="EvernoteClone\ViewModel\LoginVM.cs" />
+    <Compile Include="EvernoteClone\ViewModel\NotesVM.cs" />
+    <Compile Include="EvernoteClone\View\LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EvernoteClone\View\NotesWindow.xaml.cs">
+      <DependentUpon>NotesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EvernoteClone\View\UserControls\DisplayNote.xaml.cs">
+      <DependentUpon>DisplayNote.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EvernoteClone\View\UserControls\DisplayNotebook.xaml.cs">
+      <DependentUpon>DisplayNotebook.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Example.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="EvernoteClone\App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="EvernoteClone\View\LoginWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="EvernoteClone\View\NotesWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="EvernoteClone\View\UserControls\DisplayNote.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="EvernoteClone\View\UserControls\DisplayNotebook.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="EvernoteClone\EvernoteClone.csproj" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

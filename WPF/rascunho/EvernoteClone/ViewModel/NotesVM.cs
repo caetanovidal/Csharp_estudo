@@ -1,93 +1,85 @@
-﻿using System;
+﻿using EvernoteClone.Model;
+using EvernoteClone.ViewModel.Commands;
+using EvernoteClone.ViewModel.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using wpf006_CloneEverNote.Model;
-using wpf006_CloneEverNote.ViewModel.Commands;
-using wpf006_CloneEverNote.ViewModel.Helpers;
 
-namespace wpf006_CloneEverNote.ViewModel
+namespace EvernoteClone.ViewModel
 {
     public class NotesVM : INotifyPropertyChanged
     {
         public ObservableCollection<Notebook> Notebooks { get; set; }
-        public ObservableCollection<Notes> Notes { get; set; }
-
-        private Notebook _selectedNotebook;
-
-        public Notebook NotebookSelected
+        public ObservableCollection<Note> Notes { get; set; }
+        private Notebook selectedNotebook;
+        public Notebook SelectedNotebook
         {
-            get { return _selectedNotebook; }
+            get { return selectedNotebook; }
             set
             {
-                _selectedNotebook = value;
-                OnPropertyChanged("NotebookSelected");
+                selectedNotebook = value;
+                OnPropertyChanged("SelectedNotebook");
                 GetNotes();
             }
         }
 
-        private Notes _selectedNote;
+        private Note selectedNote;
 
-        public Notes SelectedNote
+        public Note SelectedNote
         {
-            get { return _selectedNote; }
+            get { return selectedNote; }
             set
             {
-                _selectedNote = value;
+                selectedNote = value;
                 OnPropertyChanged("SelectedNote");
                 SelectedNoteChanged?.Invoke(this, new EventArgs());
-
             }
         }
 
-        private Visibility _isVisible;
-
+        private Visibility isVisible;
         public Visibility IsVisible
         {
-            get { return _isVisible; }
+            get { return isVisible; }
             set
             {
-                _isVisible = value;
+                isVisible = value;
                 OnPropertyChanged("IsVisible");
             }
         }
 
-        public NewNotebookcommand NotebookNew { get; set; }
-        public NewNoteCommand NoteNew{ get; set; }
-        public EditCommand CommandEdit { get; set; }
-        public EndEditingCommand EditingEndCommand { get; set; }
-
+        public NewNotebookCommand NewNotebookCommand { get; set; }
+        public NewNoteCommand NewNoteCommand { get; set; }
+        public EditCommand EditCommand { get; set; }
+        public EndEditingCommand EndEditingCommand { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
         public event EventHandler SelectedNoteChanged;
 
         public NotesVM()
         {
-            NotebookNew = new NewNotebookcommand(this);
-            NoteNew = new NewNoteCommand(this);
-            CommandEdit = new EditCommand(this);
-            EditingEndCommand = new EndEditingCommand(this);
+            NewNoteCommand = new NewNoteCommand(this);
+            NewNotebookCommand = new NewNotebookCommand(this);
+            EditCommand = new EditCommand(this);
+            EndEditingCommand = new EndEditingCommand(this);
 
             Notebooks = new ObservableCollection<Notebook>();
-            Notes = new ObservableCollection<Notes>();
+            Notes = new ObservableCollection<Note>();
 
             IsVisible = Visibility.Collapsed;
 
             GetNotebooks();
-
         }
 
         public void CreateNotebook()
         {
-            Notebook newNotebook = new Notebook()
+            Notebook newNotebook = new Notebook
             {
+                Name = "Notebook"
             };
-
-            newNotebook.Name = $"Notebook";
 
             DatabaseHelper.Insert(newNotebook);
 
@@ -96,18 +88,17 @@ namespace wpf006_CloneEverNote.ViewModel
 
         public void CreateNote(int notebookId)
         {
-            Notes newNote = new Notes()
+            Note newNote = new Note
             {
                 NotebookId = notebookId,
                 CreatedAt = DateTime.Now,
-                UpdateAt = DateTime.Now,
+                UpdatedAt = DateTime.Now,
                 Title = $"Note for {DateTime.Now.ToString()}"
             };
 
             DatabaseHelper.Insert(newNote);
 
             GetNotes();
-            
         }
 
         public void GetNotebooks()
@@ -115,26 +106,24 @@ namespace wpf006_CloneEverNote.ViewModel
             var notebooks = DatabaseHelper.Read<Notebook>();
 
             Notebooks.Clear();
-
-            foreach (var notebook in notebooks)
+            foreach(var notebook in notebooks)
             {
                 Notebooks.Add(notebook);
             }
         }
 
-        public void GetNotes()
+        private void GetNotes()
         {
-            if(NotebookSelected != null)
+            if (SelectedNotebook != null)
             {
-                var notes = DatabaseHelper.Read<Notes>().Where(n => n.NotebookId == NotebookSelected.Id).ToList();
-                Notes.Clear();
+                var notes = DatabaseHelper.Read<Note>().Where(n => n.NotebookId == SelectedNotebook.Id).ToList();
 
+                Notes.Clear();
                 foreach (var note in notes)
                 {
                     Notes.Add(note);
                 }
             }
-            
         }
 
         private void OnPropertyChanged(string propertyName)
@@ -144,7 +133,7 @@ namespace wpf006_CloneEverNote.ViewModel
 
         public void StartEditing()
         {
-            IsVisible = Visibility.Visible; 
+            IsVisible = Visibility.Visible;
         }
 
         public void StopEditing(Notebook notebook)
@@ -153,6 +142,5 @@ namespace wpf006_CloneEverNote.ViewModel
             DatabaseHelper.Update(notebook);
             GetNotebooks();
         }
-
     }
 }

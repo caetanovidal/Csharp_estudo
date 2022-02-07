@@ -4,18 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using wpf006_CloneEverNote.Model;
 
 namespace wpf006_CloneEverNote.ViewModel.Commands
 {
-    public class NewNotebookcommand : ICommand
+    public class EndEditingCommand : ICommand
     {
-        public NotesVM VMnotes { get; set; }
-
         public event EventHandler CanExecuteChanged;
-        public NewNotebookcommand(NotesVM vm)
+
+        public NotesVM ViewModel { get; set; }
+
+        public EndEditingCommand(NotesVM vm)
         {
-            VMnotes = vm;
+            ViewModel = vm;
         }
+
         public bool CanExecute(object parameter)
         {
             return true;
@@ -23,9 +26,9 @@ namespace wpf006_CloneEverNote.ViewModel.Commands
 
         public void Execute(object parameter)
         {
-            VMnotes.CreateNotebook();
+            Notebook notebook = parameter as Notebook;
+            if (notebook != null)
+                ViewModel.StopEditing(notebook);
         }
-
-
     }
 }

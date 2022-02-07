@@ -1,16 +1,14 @@
-﻿using System;
+﻿using EvernoteClone.Model;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
-using wpf006_CloneEverNote.Model;
 
-namespace wpf006_CloneEverNote.ViewModel.Commands
+namespace EvernoteClone.ViewModel.Commands
 {
     public class NewNoteCommand : ICommand
     {
-        public NotesVM VMnotes { get; set; }
+        public NotesVM ViewModel { get; set; }
 
         public event EventHandler CanExecuteChanged
         {
@@ -20,24 +18,19 @@ namespace wpf006_CloneEverNote.ViewModel.Commands
 
         public NewNoteCommand(NotesVM vm)
         {
-            VMnotes = vm;
+            ViewModel = vm;
         }
 
         public bool CanExecute(object parameter)
         {
             Notebook selectedNotebook = parameter as Notebook;
-            if (selectedNotebook != null)
-            {
-                return true;
-            }
-            return false;
+            return selectedNotebook != null ? true : false;
         }
 
         public void Execute(object parameter)
         {
             Notebook selectedNotebook = parameter as Notebook;
-            VMnotes.CreateNote(selectedNotebook.Id);
-
+            ViewModel.CreateNote(selectedNotebook.Id);
         }
     }
 }
