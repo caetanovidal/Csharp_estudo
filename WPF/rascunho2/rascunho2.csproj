@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{61E04FD5-8494-420B-BC31-FDD6242BA3D9}</ProjectGuid>
+    <ProjectGuid>{495A567F-A504-4C7B-8D21-8727EC5C6D82}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>rascunho</RootNamespace>
-    <AssemblyName>rascunho</AssemblyName>
+    <RootNamespace>rascunho2</RootNamespace>
+    <AssemblyName>rascunho2</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,7 +43,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Example.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

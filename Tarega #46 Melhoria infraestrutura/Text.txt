@@ -1,0 +1,8 @@
+Li o que você escreveu e fui até o código pensar, pensei em adicionar um dict<SensorTarget, ICanal>, não sei se era exatamente isso, mas foi o que me veio primeiro. 
+Então li os artigos e incrementei os exemplos propostos nele para entender bem. Basicamente o Overload funciona como um array criado por nos mesmos, podendo estende-lo e
+adicionar uma nova função baseada no tipo passado para ele, então teremos comportamentos diferentes dependendo da tipo int, double, float... 
+Não sei se é possível fazer isso com um dictionary, vou testar. 
+Vi também o artigo sobre Yield, e um vídeo sobre. O yield pelo que entendi funciona como uma forma de
+otimizar o código, tanto na escrita, como em memória e performance, podendo substituir um for... fazendo um efeito parecido com um while + enumerator 
+e otimizando o uso de memória? criando por debaixo dos panos um Enumerator e um Enumerable.
+

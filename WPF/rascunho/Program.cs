@@ -8,71 +8,38 @@ namespace rascunho
 {
     class Program
     {
-        static void Main(string[] args)
+        class MultiDimensional
         {
-            //Type d1 = typeof(Dictionary<,>);
+            private string[,] _guideNames = new string[10, 10];
 
-            //string separacao = "-----------------------------------";
-
-            //Console.WriteLine(d1);
-            //Console.WriteLine(separacao);
-            //Console.WriteLine(d1.IsGenericType);
-            //Console.WriteLine(separacao);
-            //Console.WriteLine(d1.IsGenericTypeDefinition);
-            //Console.WriteLine(separacao);
-
-            //Type[] typeParameters = d1.GetGenericArguments();
-
-
-            //Console.WriteLine("List {0} type arguments: ", typeParameters.Length);
-
-            //foreach (Type tParam in typeParameters)
-            //{
-            //    if (tParam.IsGenericParameter)
-            //    {
-            //        DisplayGenericParameter(tParam);
-            //    }
-            //    else
-            //    {
-            //        Console.WriteLine("Type Argument: {0}", tParam);
-            //    }
-            //}
-
-
-            //Console.WriteLine(separacao);
-
-            
-
-            Type d1 = typeof(Dictionary<,>);
-
-            Dictionary<short, Example> d2 = new Dictionary<short, Example>();
-
-            Type d3 = d2.GetType();
-            Type d4 = d3.GetGenericTypeDefinition();
-
-            Console.WriteLine(d3);
-            Console.WriteLine(d4);
-
-
-            Type[] typeArgs = { typeof(short), typeof(Example) };
-
-            Console.WriteLine(typeArgs);
-
-            Type constructed = d1.MakeGenericType(typeArgs);
-            
-            Console.WriteLine(constructed);
-
-            object o = Activator.CreateInstance(constructed);
-            
-            Console.WriteLine(o);
-            
-
+            public string this[int x, int y]
+            {
+                get { return _guideNames[x, y]; }
+                set { _guideNames[x, y] = value; }
+            }
+            public string this[float x, float y]
+            {
+                get { return _guideNames[0, 0]; }
+                set { _guideNames[0, 0] = value; }
+            }
         }
 
-        private static void DisplayGenericParameter(Type tp)
+        static void Main(string[] args)
         {
-            Console.WriteLine("      Type parameter: {0} position {1}",
-        tp.Name, tp.GenericParameterPosition); ;
+            MultiDimensional theMatrix = new MultiDimensional();
+            //theMatrix[0, 0] = "Daniel";
+            theMatrix[0.0f, 1.0f] = "Florian";
+            for (int i = 0; i < 10; i++)
+            {
+                for (int j = 0; j < 10; j++)
+                {
+                    if (theMatrix[i, j] == null) { Console.Write("N.A. "); }
+                    else { Console.Write($"{theMatrix[i, j]} "); }
+                }
+                Console.WriteLine();
+            }
+
+            Console.ReadKey();
         }
     }
 }

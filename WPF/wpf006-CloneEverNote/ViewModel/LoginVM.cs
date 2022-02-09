@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using wpf006_CloneEverNote.Model;
 using wpf006_CloneEverNote.ViewModel.Commands;
+using wpf006_CloneEverNote.ViewModel.Helpers;
 
 namespace wpf006_CloneEverNote.ViewModel
 {
@@ -56,7 +57,7 @@ namespace wpf006_CloneEverNote.ViewModel
                     LastName = this.LastName,
                     Username = _userName,
                     Name = this.Name,
-                    Password = this.Password
+                    Password = _password
                 };
                 OnProperyChanged("Password");
             }
@@ -66,7 +67,7 @@ namespace wpf006_CloneEverNote.ViewModel
 
         public string Name
         {
-            get { return _password; }
+            get { return _name; }
             set
             {
                 _name = value;
@@ -74,7 +75,7 @@ namespace wpf006_CloneEverNote.ViewModel
                 {
                     ConfirmaPassword = this.ConfirmPassword,
                     LastName = this.LastName,
-                    Name = this.Name,
+                    Name = _name,
                     Username = _userName,
                     Password = this.Password
                 };
@@ -93,7 +94,7 @@ namespace wpf006_CloneEverNote.ViewModel
                 UserProps = new User
                 {
                     ConfirmaPassword = this.ConfirmPassword,
-                    LastName = this.LastName,
+                    LastName = _lastName,
                     Name = this.Name,
                     Username = _userName,
                     Password = this.Password
@@ -112,7 +113,7 @@ namespace wpf006_CloneEverNote.ViewModel
                 _confirmPassword = value;
                 UserProps = new User
                 {
-                    ConfirmaPassword = this.ConfirmPassword,
+                    ConfirmaPassword = _confirmPassword,
                     LastName = this.LastName,
                     Name = this.Name,
                     Username = _userName,
@@ -145,6 +146,8 @@ namespace wpf006_CloneEverNote.ViewModel
         }
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public event EventHandler Authenticated;
+
 
         public RegisterCommand RegisterCom { get; set; }
         public LoginCommand LoginComm { get; set; }
@@ -163,9 +166,9 @@ namespace wpf006_CloneEverNote.ViewModel
         }
 
         public void SwithcViews()
-        {
-
+        { 
             _isShowingRegister = !_isShowingRegister;
+
 
             if (_isShowingRegister)
             {
@@ -179,14 +182,22 @@ namespace wpf006_CloneEverNote.ViewModel
             }
         }
 
-        public void Login()
+        public async void Login()
         {
-            // TODO: Login
+            bool result = await FirebaseAuthHelper.Login(UserProps);
+            if (result)
+            {
+                Authenticated?.Invoke(this, new EventArgs());
+            }
         }
 
-        public void Register()
+        public async void Register()
         {
-            // TODO: Register
+            bool result = await FirebaseAuthHelper.Register(UserProps);
+            if (result)
+            {
+                Authenticated?.Invoke(this, new EventArgs());
+            }
         }
 
         private void OnProperyChanged(string propName)

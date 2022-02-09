@@ -1,8 +1,10 @@
-﻿using SQLite;
+﻿using Newtonsoft.Json;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,20 +13,38 @@ namespace wpf006_CloneEverNote.ViewModel.Helpers
     public class DatabaseHelper
     {
         private static string dbFile = Path.Combine(Environment.CurrentDirectory, "notesDb.db3");
+        private static string dbPath = "https://notesappwpf-b184b-default-rtdb.firebaseio.com/";
         //arquivo db dentro do bin/debug
-        public static bool Insert<T>(T item)
+        public static async Task<bool> Insert<T>(T item)
         {
-            bool result = false;
+            //bool result = false;
 
-            using(SQLiteConnection conn = new SQLiteConnection(dbFile))
+            //using(SQLiteConnection conn = new SQLiteConnection(dbFile))
+            //{
+            //    conn.CreateTable<T>();
+            //    int rows = conn.Insert(item);
+            //    if (rows > 0)
+            //        result = true;
+            //}
+
+            //return result;
+
+            var jsonBody = JsonConvert.SerializeObject(item);
+            var content = new StringContent(jsonBody, Encoding.UTF8, "application/json");
+
+            using (var client = new HttpClient())
             {
-                conn.CreateTable<T>();
-                int rows = conn.Insert(item);
-                if (rows > 0)
-                    result = true;
-            }
+                var result = await client.PostAsync($"{dbPath}{item.GetType().Name.ToLower()}.json", content);
 
-            return result;
+                if (result.IsSuccessStatusCode)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false; 
+                }
+            }
         }
 
         public static bool Update<T>(T item)
@@ -60,17 +80,43 @@ namespace wpf006_CloneEverNote.ViewModel.Helpers
             return result;
         }
 
-        public static List<T> Read<T>() where T : new()
+        public static async Task<List<T>> Read<T>() where T : new()
         {
-            List<T> items;
+            //List<T> items;
 
-            using (SQLiteConnection conn = new SQLiteConnection(dbFile))
+            //using (SQLiteConnection conn = new SQLiteConnection(dbFile))
+            //{
+            //    conn.CreateTable<T>();
+            //    items = conn.Table<T>().ToList();
+            //}
+
+            //return items;
+
+            using (var client = new HttpClient())
             {
-                conn.CreateTable<T>();
-                items = conn.Table<T>().ToList();
+                var result = await client.GetAsync($"{dbPath}{typeof(T).Name.ToLower()}.json");
+
+                var jsonResult = await result.Content.ReadAsStringAsync();
+
+                if (result.IsSuccessStatusCode)
+                {
+                    var objects = JsonConvert.DeserializeObject<Dictionary<string, T>>(jsonResult);
+
+                    List<T> list = new List<T>();
+                    foreach(var o in objects)
+                    {
+                        list.Add(o.Value); 
+                    }
+
+                    return list;
+                }
+                else
+                {
+                    return null;
+                }
             }
 
-            return items;
+
         }
 
         
