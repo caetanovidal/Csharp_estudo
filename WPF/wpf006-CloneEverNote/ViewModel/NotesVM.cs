@@ -81,7 +81,7 @@ namespace wpf006_CloneEverNote.ViewModel
 
         }
 
-        public async void CreateNotebook()
+        public void CreateNotebook()
         {
             Notebook newNotebook = new Notebook()
             {
@@ -89,12 +89,12 @@ namespace wpf006_CloneEverNote.ViewModel
                 UserId = App.UserID
             };
 
-            await DatabaseHelper.Insert(newNotebook);
+            DatabaseHelper.Insert(newNotebook);
 
             GetNotebooks();
         }
 
-        public async void CreateNote(int notebookId)
+        public void CreateNote(string notebookId)
         {
             Notes newNote = new Notes()
             {
@@ -104,7 +104,7 @@ namespace wpf006_CloneEverNote.ViewModel
                 Title = $"Note for {DateTime.Now.ToString()}"
             };
 
-            await DatabaseHelper.Insert(newNote);
+            DatabaseHelper.Insert(newNote);
 
             GetNotes();
             
