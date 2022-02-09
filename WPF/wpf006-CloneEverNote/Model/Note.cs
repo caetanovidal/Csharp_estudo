@@ -9,8 +9,9 @@ namespace wpf006_CloneEverNote.Model
 {
     public class Notes
     {
-        public string Id { get; set; }
-        public string NotebookId { get; set; }
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
+        public int NotebookId { get; set; }
         public string Title { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdateAt { get; set; }

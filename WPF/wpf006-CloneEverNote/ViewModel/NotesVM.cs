@@ -94,7 +94,7 @@ namespace wpf006_CloneEverNote.ViewModel
             GetNotebooks();
         }
 
-        public void CreateNote(string notebookId)
+        public void CreateNote(int notebookId)
         {
             Notes newNote = new Notes()
             {
