@@ -12,23 +12,39 @@ namespace wpf006_CloneEverNote.ViewModel.Helpers
 {
     public class DatabaseHelper
     {
+        //arquivo db dentro do bin/debug
         private static string dbFile = Path.Combine(Environment.CurrentDirectory, "notesDb.db3");
         private static string dbPath = "https://notesappwpf-b184b-default-rtdb.firebaseio.com/";
-        //arquivo db dentro do bin/debug
-        public static bool Insert<T>(T item)
+        
+        public static async Task<bool> Insert<T>(T item)
         {
-            bool result = false;
+            //bool result = false;
 
-            using(SQLiteConnection conn = new SQLiteConnection(dbFile))
+            //using(SQLiteConnection conn = new SQLiteConnection(dbFile))
+            //{
+            //    conn.CreateTable<T>();
+            //    int rows = conn.Insert(item);
+            //    if (rows > 0)
+            //        result = true;
+            //}
+
+            //return result;
+
+            string jsonBody = JsonConvert.SerializeObject(item);
+            var content = new StringContent(jsonBody, Encoding.UTF8, "application/json");
+
+            using (var client = new HttpClient())
             {
-                conn.CreateTable<T>();
-                int rows = conn.Insert(item);
-                if (rows > 0)
-                    result = true;
+                var result = await client.PostAsync($"{dbPath}{item.GetType().Name.ToLower()}.json", content);
+                if (result.IsSuccessStatusCode)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
-
-            return result;
-
         }
 
         public static bool Update<T>(T item)
