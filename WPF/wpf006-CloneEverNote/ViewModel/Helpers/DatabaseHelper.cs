@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using wpf006_CloneEverNote.Model;
 
 namespace wpf006_CloneEverNote.ViewModel.Helpers
 {
@@ -62,36 +63,77 @@ namespace wpf006_CloneEverNote.ViewModel.Helpers
             }
 
             return result;
+
+            
         }
 
-        public static bool Delete<T>(T item)
+        public async static Task<bool> Delete<T>(T item) where T : HasID
         {
-            bool result = false;
+            //bool result = false;
 
-            using (SQLiteConnection conn = new SQLiteConnection(dbFile))
+            //using (SQLiteConnection conn = new SQLiteConnection(dbFile))
+            //{
+            //    conn.CreateTable<T>();
+            //    int row = conn.Delete(item);
+            //    if (row > 0)
+            //    {
+            //        result = true;
+            //    }
+            //}
+            //return result;
+
+            using (var client = new HttpClient())
             {
-                conn.CreateTable<T>();
-                int row = conn.Delete(item);
-                if (row > 0)
+                var result = await client.DeleteAsync($"{dbPath}{item.GetType().Name.ToLower()}/{item.Id}.json");
+
+                if (result.IsSuccessStatusCode)
                 {
-                    result = true;
+                    return true;
+                }
+                else
+                {
+                    return false;
                 }
             }
-            return result;
         }
 
-        public static List<T> Read<T>() where T : new()
+        public static async Task<List<T>> Read<T>() where T : HasID
         {
-            List<T> items;
+            //List<T> items;
 
-            using (SQLiteConnection conn = new SQLiteConnection(dbFile))
+            //using (SQLiteConnection conn = new SQLiteConnection(dbFile))
+            //{
+            //    conn.CreateTable<T>();
+            //    items = conn.Table<T>().ToList();
+            //}
+
+            //return items;
+
+            using ( var client = new HttpClient())
             {
-                conn.CreateTable<T>();
-                items = conn.Table<T>().ToList();
+                var result = await client.GetAsync($"{dbPath}{typeof(T).Name.ToLower()}.json");
+
+                var jsonResult =  await result.Content.ReadAsStringAsync();
+
+                if (result.IsSuccessStatusCode)
+                {
+                    var objects = JsonConvert.DeserializeObject<Dictionary<string, T>>(jsonResult);
+
+                    List<T> list = new List<T>();
+
+                    foreach(var o in objects)
+                    {
+                        o.Value.Id = o.Key;
+                        list.Add(o.Value);
+                    }
+                    return list;
+                }
+                else
+                {
+                    return null;
+                }
+                
             }
-
-            return items;
-
 
         }
 

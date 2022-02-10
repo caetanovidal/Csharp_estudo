@@ -94,7 +94,7 @@ namespace wpf006_CloneEverNote.ViewModel
             GetNotebooks();
         }
 
-        public async void CreateNote(int notebookId)
+        public async void CreateNote(string notebookId)
         {
             Notes newNote = new Notes()
             {
@@ -110,9 +110,9 @@ namespace wpf006_CloneEverNote.ViewModel
             
         }
 
-        public void GetNotebooks()
+        public async void GetNotebooks()
         {
-            var notebooks = DatabaseHelper.Read<Notebook>().Where(n => n.UserId == App.UserID).ToList();
+            var notebooks = (await DatabaseHelper.Read<Notebook>()).Where(n => n.UserId == App.UserID).ToList();
 
             Notebooks.Clear();
 
@@ -122,17 +122,29 @@ namespace wpf006_CloneEverNote.ViewModel
             }
         }
 
-        public void GetNotes()
+        public async void GetNotes()
         {
             if(NotebookSelected != null)
             {
-                var notes = DatabaseHelper.Read<Notes>().Where(n => n.NotebookId == NotebookSelected.Id).ToList();
-                Notes.Clear();
+                //var notes = (await DatabaseHelper.Read<Notes>()).Where(n => n.NotebookId == NotebookSelected.Id).ToList();
 
-                foreach (var note in notes)
+                try
                 {
-                    Notes.Add(note);
+                    var notes = (await DatabaseHelper.Read<Notes>()).Where(n => n.NotebookId == NotebookSelected.Id).ToList();
+                    Notes.Clear();
+
+                    foreach (var note in notes)
+                    {
+                        Notes.Add(note);
+                    }
                 }
+                catch 
+                {
+                    
+                }
+                    
+                
+                
             }
             
         }
