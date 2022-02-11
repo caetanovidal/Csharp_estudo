@@ -48,23 +48,42 @@ namespace wpf006_CloneEverNote.ViewModel.Helpers
             }
         }
 
-        public static bool Update<T>(T item)
+        public async static Task<bool> Update<T>(T item) where T : HasID
         {
-            bool result = false;
+            //bool result = false;
 
-            using(SQLiteConnection conn = new SQLiteConnection(dbFile))
+            //using(SQLiteConnection conn = new SQLiteConnection(dbFile))
+            //{
+            //    conn.CreateTable<T>();
+            //    int row = conn.Update(item);
+            //    if (row > 0)
+            //    {
+            //        result = true;
+            //    }
+            //}
+
+            //return result;
+
+            string jsonBody = JsonConvert.SerializeObject(item);
+            var content = new StringContent(jsonBody, Encoding.UTF8, "application/json");
+
+            using (var client = new HttpClient())
             {
-                conn.CreateTable<T>();
-                int row = conn.Update(item);
-                if (row > 0)
+                var request = new HttpRequestMessage(new HttpMethod("PATCH"), $"{dbPath}{item.GetType().Name.ToLower()}/{item.Id}.json");
+                request.Content = content;
+                var response = await client.SendAsync(request);
+
+                if (response.IsSuccessStatusCode)
                 {
-                    result = true;
+                    return true;
+                }
+                else
+                {
+                    return false;
                 }
             }
 
-            return result;
 
-            
         }
 
         public async static Task<bool> Delete<T>(T item) where T : HasID

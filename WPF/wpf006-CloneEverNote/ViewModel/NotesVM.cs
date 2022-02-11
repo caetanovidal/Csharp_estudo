@@ -159,10 +159,10 @@ namespace wpf006_CloneEverNote.ViewModel
             IsVisible = Visibility.Visible; 
         }
 
-        public void StopEditing(Notebook notebook)
+        public async void StopEditing(Notebook notebook)
         {
             IsVisible = Visibility.Collapsed;
-            DatabaseHelper.Update(notebook);
+            await DatabaseHelper.Update(notebook);
             GetNotebooks();
         }
 

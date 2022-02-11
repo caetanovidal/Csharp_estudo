@@ -194,11 +194,11 @@ namespace wpf006_CloneEverNote.View
 
         }
 
-        private void Save_Click(object sender, RoutedEventArgs e)
+        private async void Save_Click(object sender, RoutedEventArgs e)
         {
             string rtfFile = System.IO.Path.Combine(Environment.CurrentDirectory, $"{viewModel.SelectedNote.Id}.rtf");
             viewModel.SelectedNote.FileLocation = rtfFile;
-            DatabaseHelper.Update(viewModel.SelectedNote);
+            await DatabaseHelper.Update(viewModel.SelectedNote);
 
             FileStream file = new FileStream(rtfFile, FileMode.Create);
             var contents = new TextRange(contentRichTextBox.Document.ContentStart, contentRichTextBox.Document.ContentEnd);
