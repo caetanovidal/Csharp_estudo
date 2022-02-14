@@ -7,36 +7,146 @@
         xmlns:vm="clr-namespace:wpf006_CloneEverNote.ViewModel"
         xmlns:local="clr-namespace:wpf006_CloneEverNote.View"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="450" Width="350">
+        Title="Login" Height="450" Width="350" Icon="icons8_notes_96_WbG_icon.ico">
     <Window.Resources>
         <ResourceDictionary>
             <vm:LoginVM x:Key="vm"/>
+            <Storyboard x:Key="MoveUp">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="button">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="1"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="button">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="28"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="11"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="button">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="250">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <ElasticEase EasingMode="EaseIn"/>
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="322">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <ElasticEase EasingMode="EaseIn"/>
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="button">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="12">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <ElasticEase EasingMode="EaseIn"/>
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="19.96">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <ElasticEase EasingMode="EaseIn"/>
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="MoveUpRegister">
+                <Int32AnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.ZIndex)" Storyboard.TargetName="button1">
+                    <EasingInt32KeyFrame KeyTime="0" Value="-5"/>
+                    <EasingInt32KeyFrame KeyTime="0:0:0.8" Value="-5"/>
+                    <EasingInt32KeyFrame KeyTime="0:0:1" Value="-5"/>
+                </Int32AnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="button1">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="25"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="7"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="button1">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="0.965"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0.965"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="button1">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="250">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <ElasticEase EasingMode="EaseIn"/>
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="300">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <ElasticEase EasingMode="EaseIn"/>
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1" Value="322">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <ElasticEase EasingMode="EaseIn"/>
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="button1">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="12">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <ElasticEase EasingMode="EaseIn"/>
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="18">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <ElasticEase EasingMode="EaseIn"/>
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1" Value="19.96">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <ElasticEase EasingMode="EaseIn"/>
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
         </ResourceDictionary>
     </Window.Resources>
-    
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard x:Name="MoveUpRegister_BeginStoryboard" Storyboard="{StaticResource MoveUpRegister}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeftButtonDown" SourceName="textBlock1">
+            <BeginStoryboard Storyboard="{StaticResource MoveUp}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeftButtonDown" SourceName="textBlock">
+            <BeginStoryboard x:Name="MoveUpRegister_BeginStoryboard1" Storyboard="{StaticResource MoveUpRegister}"/>
+        </EventTrigger>
+    </Window.Triggers>
+
     <Grid DataContext="{StaticResource vm}">
-        <StackPanel Visibility="{Binding LoginVis}"
+
+        <StackPanel x:Name="stackPanel" Visibility="{Binding LoginVis}"
                     Margin="10">
             <TextBlock Text="Email: "/>
             <TextBox Text="{Binding Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             <TextBlock Text="Password: "/>
             <TextBox Text="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-            <Button Command="{Binding LoginComm}"
+            <Button x:Name="button" Command="{Binding LoginComm}"
                     CommandParameter="{Binding UserProps}"
                     Margin="0, 5"
-                    Content="Login"/>
-            <TextBlock Text="Register"
-                       Foreground="DodgerBlue"
-                       TextDecorations="Underline">
+                    Content="Login" Background="#FFB9F397" RenderTransformOrigin="0.5,0.5" Width="322" Height="19.96">
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+            </Button>
+            <TextBlock x:Name="textBlock" Text="I don't have an account"
+                       Background="LightGray"
+                       HorizontalAlignment="Right"
+                       TextAlignment="Center"
+                     TextDecorations="Underline" Height="19.627" Margin="0,4,4,4" Width="152.24">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseLeftButtonDown">
-                        <i:InvokeCommandAction Command="{Binding ShowRegister}"/> 
+                        <i:InvokeCommandAction Command="{Binding ShowRegister}"/>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </TextBlock>
         </StackPanel>
-        
-        <StackPanel Visibility="{Binding RegisterVis}"
+
+        <StackPanel x:Name="stackPanel1" Visibility="{Binding RegisterVis}"
                     Margin="10">
             <TextBlock Text="Email: "/>
             <TextBox Text="{Binding Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
@@ -48,21 +158,35 @@
             <TextBox Text="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             <TextBlock Text="Confirm Password: "/>
             <TextBox Text="{Binding ConfirmPassword, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-            <Button Command="{Binding RegisterCom}"
+            <Button x:Name="button1" Command="{Binding RegisterCom}"
                     CommandParameter="{Binding UserProps}"
                     Margin="0,5"
-                    Content="Register"/>
-            <TextBlock Text="Register"
-                       Foreground="DodgerBlue"
+                    Content="Register" RenderTransformOrigin="0.5,0.5" Width="322" Height="19.96">
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+            </Button>
+            <TextBlock x:Name="textBlock1" Text="I already have an account"
+                       Background="LightGray"
+                       Margin="4"
+                       HorizontalAlignment="Right"
+                       TextAlignment="Center"
+                       Height="19.627"
+                       Width="160"
                        TextDecorations="Underline">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseLeftButtonDown">
                         <i:InvokeCommandAction Command="{Binding ShowRegister}"/>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
-                
+
             </TextBlock>
-            
+
         </StackPanel>
     </Grid>
 </Window>

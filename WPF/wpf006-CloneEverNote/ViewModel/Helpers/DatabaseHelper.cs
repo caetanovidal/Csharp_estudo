@@ -19,17 +19,6 @@ namespace wpf006_CloneEverNote.ViewModel.Helpers
         
         public static async Task<bool> Insert<T>(T item)
         {
-            //bool result = false;
-
-            //using(SQLiteConnection conn = new SQLiteConnection(dbFile))
-            //{
-            //    conn.CreateTable<T>();
-            //    int rows = conn.Insert(item);
-            //    if (rows > 0)
-            //        result = true;
-            //}
-
-            //return result;
 
             string jsonBody = JsonConvert.SerializeObject(item);
             var content = new StringContent(jsonBody, Encoding.UTF8, "application/json");
@@ -50,19 +39,6 @@ namespace wpf006_CloneEverNote.ViewModel.Helpers
 
         public async static Task<bool> Update<T>(T item) where T : HasID
         {
-            //bool result = false;
-
-            //using(SQLiteConnection conn = new SQLiteConnection(dbFile))
-            //{
-            //    conn.CreateTable<T>();
-            //    int row = conn.Update(item);
-            //    if (row > 0)
-            //    {
-            //        result = true;
-            //    }
-            //}
-
-            //return result;
 
             string jsonBody = JsonConvert.SerializeObject(item);
             var content = new StringContent(jsonBody, Encoding.UTF8, "application/json");
@@ -88,18 +64,6 @@ namespace wpf006_CloneEverNote.ViewModel.Helpers
 
         public async static Task<bool> Delete<T>(T item) where T : HasID
         {
-            //bool result = false;
-
-            //using (SQLiteConnection conn = new SQLiteConnection(dbFile))
-            //{
-            //    conn.CreateTable<T>();
-            //    int row = conn.Delete(item);
-            //    if (row > 0)
-            //    {
-            //        result = true;
-            //    }
-            //}
-            //return result;
 
             using (var client = new HttpClient())
             {
@@ -118,15 +82,6 @@ namespace wpf006_CloneEverNote.ViewModel.Helpers
 
         public static async Task<List<T>> Read<T>() where T : HasID
         {
-            //List<T> items;
-
-            //using (SQLiteConnection conn = new SQLiteConnection(dbFile))
-            //{
-            //    conn.CreateTable<T>();
-            //    items = conn.Table<T>().ToList();
-            //}
-
-            //return items;
 
             using ( var client = new HttpClient())
             {

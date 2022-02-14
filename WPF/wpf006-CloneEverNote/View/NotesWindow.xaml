@@ -8,7 +8,7 @@
         xmlns:vm="clr-namespace:wpf006_CloneEverNote.ViewModel"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
-        Title="NotesWindow" Height="500" Width="750">
+        Title="Notebooks" Height="500" Width="750" Icon="icons8_notes_96_WbG_icon.ico">
 
     <Window.Resources>
         <ResourceDictionary>
