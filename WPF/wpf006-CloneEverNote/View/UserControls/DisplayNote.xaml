@@ -16,8 +16,8 @@
                    VerticalAlignment="Center"/>
         <TextBlock Text="{Binding CreatedAt}"
                    Foreground="DodgerBlue"
-                   Margin="15"
-                   FontSize="15"
+                   Margin="12"
+                   FontSize="12"
                    VerticalAlignment="Center"/>
     </StackPanel>
 </UserControl>

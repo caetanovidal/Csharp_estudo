@@ -9,7 +9,6 @@
              d:DesignHeight="100" d:DesignWidth="300">
     <Grid>
         <TextBlock Text="{Binding Name}"
-                   Background="Black"
                    Foreground="White"
                    Margin="15"
                    FontSize="20"
