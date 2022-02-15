@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using wpf006_CloneEverNote.Model;
 
 namespace wpf006_CloneEverNote.ViewModel.Commands
 {
@@ -25,7 +26,12 @@ namespace wpf006_CloneEverNote.ViewModel.Commands
 
 		public void Execute(object parameter)
 		{
-			ViewModel.DeleteNote();
+			var note = parameter as Notes;
+
+			if (note != null)
+			{
+				ViewModel.DeleteNote();
+			}
 		}
 	}
 }
