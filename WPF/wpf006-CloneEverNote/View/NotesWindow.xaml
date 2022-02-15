@@ -65,6 +65,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        
         <ListView DockPanel.Dock="Left"
                   Width="250"
                   SelectedValue="{Binding SelectedNote, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
@@ -93,6 +94,7 @@
                             </i:Interaction.Triggers>
                         </TextBlock>
                         
+
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
@@ -136,6 +138,12 @@
             <RichTextBox x:Name="contentRichTextBox"
                          TextChanged="contentRichTextBox_TextChanged"
                          SelectionChanged="ContentRichTextBox_SelectionChanged"/>
+            <TextBox Margin="10"
+                         Text="{Binding Path=SelectedNote.Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <RichTextBox x:Name="contentRichTextBox1"
+                             SelectionChanged="ContentRichTextBox_SelectionChanged"
+                             TextChanged="contentRichTextBox_TextChanged"/>
+
         </Grid>
         
     </DockPanel>

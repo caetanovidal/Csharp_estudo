@@ -135,14 +135,19 @@ namespace wpf006_CloneEverNote.ViewModel
 
         public async void GetNotebooks()
         {
-            var notebooks = (await DatabaseHelper.Read<Notebook>()).Where(n => n.UserId == App.UserID).ToList();
+			try
+			{
+				var notebooks = (await DatabaseHelper.Read<Notebook>()).Where(n => n.UserId == App.UserID).ToList();
+				Notebooks.Clear();
 
-            Notebooks.Clear();
-
-            foreach (var notebook in notebooks)
-            {
-                Notebooks.Add(notebook);
-            }
+				foreach (var notebook in notebooks)
+				{
+					Notebooks.Add(notebook);
+				}
+			}
+			catch (Exception e)
+			{
+			}
         }
 
         public async void GetNotes()
@@ -186,8 +191,15 @@ namespace wpf006_CloneEverNote.ViewModel
 
 		public async void DeleteNotebook()
 		{
-			
-			await DatabaseHelper.Delete(_selectedNotebook);
+
+			var notes = (await DatabaseHelper.Read<Notes>()).Where(n => n.NotebookId == NotebookSelected.Id).ToList();
+
+			foreach (Notes n in notes)
+			{
+				DeleteNote(n);
+			}
+
+			await DatabaseHelper.Delete(NotebookSelected);
 			GetNotebooks();
 
 			//TODO deletar todas as notes antes de deletar o Notebook.
@@ -196,6 +208,12 @@ namespace wpf006_CloneEverNote.ViewModel
 		public async void DeleteNote()
 		{
 			await DatabaseHelper.Delete(SelectedNote);
+			GetNotes();
+		}
+
+		public async void DeleteNote(Notes note)
+		{
+			await DatabaseHelper.Delete(note);
 			GetNotes();
 		}
 
