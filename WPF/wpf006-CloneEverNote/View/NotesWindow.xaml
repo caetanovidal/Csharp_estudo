@@ -76,8 +76,8 @@
                         <uc:DisplayNote Note="{Binding}">
                             <uc:DisplayNote.ContextMenu>
                                 <ContextMenu>
-                                    <MenuItem Header="Rename"
-                                              Command="{Binding Source={StaticResource vm}, Path=EditNotecommand}"/>
+                                    <!--<MenuItem Header="Rename"
+                                              Command="{Binding Source={StaticResource vm}, Path=EditNotecommand}"/>-->
                                     <MenuItem Header="Delete"
                                               Command="{Binding Source={StaticResource vm}, Path=DeleteNoteComm}"/>
                                 </ContextMenu>
