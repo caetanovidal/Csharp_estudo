@@ -47,6 +47,8 @@
                                 <ContextMenu>
                                     <MenuItem Header="Rename"
                                               Command="{Binding Source={StaticResource vm}, Path=CommandEdit}"/>
+                                    <MenuItem Header="Delete"
+                                              Command="{Binding Source={StaticResource vm}, Path=DeleteComm}"/>
                                 </ContextMenu>
                             </uc:DisplayNotebook.ContextMenu>
                         </uc:DisplayNotebook>
@@ -70,7 +72,28 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <!--<TextBlock Text="NOTE"/>-->
-                    <uc:DisplayNote Note="{Binding}"/>
+                    <Grid>
+                        <uc:DisplayNote Note="{Binding}">
+                            <uc:DisplayNote.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="Rename"
+                                              Command="{Binding Source={StaticResource vm}, Path=EditNotecommand}"/>
+                                    <MenuItem Header="Delete"
+                                              Command="{Binding Source={StaticResource vm}, Path=DeleteNoteComm}"/>
+                                </ContextMenu>
+                            </uc:DisplayNote.ContextMenu>
+                        </uc:DisplayNote>
+                        <TextBlock Text="{Binding Title, Mode=TwoWay}"
+                                   Visibility="{Binding Source={StaticResource vm}, Path=NoteVisible}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="LostFocus">
+                                    <i:InvokeCommandAction Command="{Binding Source={StaticResource vm}, Path=EndEditNotecomm}" 
+                                                           CommandParameter="{Binding}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </TextBlock>
+                        
+                    </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

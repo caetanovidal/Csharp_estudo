@@ -125,13 +125,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModel\Commands\DeleteCommand.cs" />
+    <Compile Include="ViewModel\Commands\DeleteNotes.cs" />
     <Compile Include="ViewModel\Commands\EditCommand.cs" />
+    <Compile Include="ViewModel\Commands\EditNoteComm.cs" />
     <Compile Include="ViewModel\Commands\EndEditingCommand.cs" />
     <Compile Include="ViewModel\Commands\LoginCommand.cs" />
     <Compile Include="ViewModel\Commands\NewNotebookcommand.cs" />
     <Compile Include="ViewModel\Commands\NewNoteCommand.cs" />
     <Compile Include="ViewModel\Commands\RegisterCommand.cs" />
     <Compile Include="ViewModel\Commands\ShowRegisterCommand.cs" />
+    <Compile Include="ViewModel\Commands\EndEditingNoteComm.cs" />
     <Compile Include="ViewModel\Helpers\DatabaseHelper.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>

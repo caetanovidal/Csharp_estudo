@@ -56,13 +56,30 @@ namespace wpf006_CloneEverNote.ViewModel
             }
         }
 
-        public NewNotebookcommand NotebookNew { get; set; }
+		private Visibility _noteVisible;
+
+		public Visibility NoteVisible
+		{
+			get { return _noteVisible; }
+			set
+			{
+				_noteVisible = value;
+				OnPropertyChanged("NoteVisible");
+			}
+		}
+
+
+		public NewNotebookcommand NotebookNew { get; set; }
         public NewNoteCommand NoteNew{ get; set; }
         public EditCommand CommandEdit { get; set; }
         public EndEditingCommand EditingEndCommand { get; set; }
+		public DeleteCommand DeleteComm { get; set; }
+		public DeleteNotes DeleteNoteComm { get; set; }
+		public EditNoteComm EditNotecommand { get; set; }
+		public EndEditingNoteComm EndEditNotecomm { get; set; }
 
 
-        public event PropertyChangedEventHandler PropertyChanged;
+		public event PropertyChangedEventHandler PropertyChanged;
         public event EventHandler SelectedNoteChanged;
 
         public NotesVM()
@@ -71,11 +88,17 @@ namespace wpf006_CloneEverNote.ViewModel
             NoteNew = new NewNoteCommand(this);
             CommandEdit = new EditCommand(this);
             EditingEndCommand = new EndEditingCommand(this);
+			DeleteComm = new DeleteCommand(this);
+			DeleteNoteComm = new DeleteNotes(this);
+			EditNotecommand = new EditNoteComm(this);
+			EndEditNotecomm = new EndEditingNoteComm(this);
+
 
             Notebooks = new ObservableCollection<Notebook>();
             Notes = new ObservableCollection<Notes>();
 
             IsVisible = Visibility.Collapsed;
+			NoteVisible = Visibility.Collapsed;
 
             GetNotebooks();
 
@@ -126,9 +149,8 @@ namespace wpf006_CloneEverNote.ViewModel
         {
             if(NotebookSelected != null)
             {
-                //var notes = (await DatabaseHelper.Read<Notes>()).Where(n => n.NotebookId == NotebookSelected.Id).ToList();
 
-                try
+				try
                 {
                     var notes = (await DatabaseHelper.Read<Notes>()).Where(n => n.NotebookId == NotebookSelected.Id).ToList();
                     Notes.Clear();
@@ -142,11 +164,7 @@ namespace wpf006_CloneEverNote.ViewModel
                 {
                     
                 }
-                    
-                
-                
             }
-            
         }
 
         private void OnPropertyChanged(string propertyName)
@@ -166,5 +184,31 @@ namespace wpf006_CloneEverNote.ViewModel
             GetNotebooks();
         }
 
+		public async void DeleteNotebook()
+		{
+			
+			await DatabaseHelper.Delete(_selectedNotebook);
+			GetNotebooks();
+
+			//TODO deletar todas as notes antes de deletar o Notebook.
+		}
+
+		public async void DeleteNote()
+		{
+			await DatabaseHelper.Delete(SelectedNote);
+			GetNotes();
+		}
+
+		public void StartEditNote()
+		{
+			NoteVisible = Visibility.Visible;
+		}
+
+		public async void StopEditingNote(Notes note)
+		{
+			IsVisible = Visibility.Collapsed;
+			await DatabaseHelper.Update(note);
+			GetNotes();
+		}
     }
 }

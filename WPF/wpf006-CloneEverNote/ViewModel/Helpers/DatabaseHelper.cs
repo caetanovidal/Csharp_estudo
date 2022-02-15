@@ -37,6 +37,8 @@ namespace wpf006_CloneEverNote.ViewModel.Helpers
             }
         }
 
+
+
         public async static Task<bool> Update<T>(T item) where T : HasID
         {
 
